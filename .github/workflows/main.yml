@@ -14,5 +14,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Generate SHA
+      id: generate_sha
+      run: |
+        SHA=${echo $GITHUB_SHA | head -c7}
+        echo "sha=$SHA" >> $GITHUB_OUTPUT
+
+    - name: Login into the container registry
+      user: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
     - name: Build Docker image
-      run: docker build -t Frankdias92/nlw.journey.api:latest .
+      run: docker build -t Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} .
+
