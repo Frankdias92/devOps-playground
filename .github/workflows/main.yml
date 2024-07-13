@@ -9,11 +9,6 @@ jobs:
   build-and-push:
     name: 'Build and Push'
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-      attestations: write
-      id-token: write
 
     steps:
     - name: Checkout
@@ -26,25 +21,25 @@ jobs:
         echo "sha=$SHA" >> $GITHUB_OUTPUT
 
     - name: Login into the container registry
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        push: true
-        tags: |
-          docker.io/frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
-          docker.io/frankdias92/nlw.journey.api:latest
+#    - name: Build and push
+#      uses: docker/build-push-action@v4
+#      with:
+#        context: .
+#        push: true
+#        tags: |
+#          docker.io/frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
+#          docker.io/frankdias92/nlw.journey.api:latest
 
-#    - name: Build Docker image
-#      run: docker build -t Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} .
+    - name: Build Docker image
+      run: docker build -t Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} .
 
- #   - name: Push image
- #     run: |
- #       docker push Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
- #       docker tag Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} Frankdias92/nlw.journey.api:latest
- #       docker push Frankdias92/nlw.journey.api:latest
+    - name: Push image
+      run: |
+        docker push Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
+        docker tag Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} Frankdias92/nlw.journey.api:latest
+        docker push Frankdias92/nlw.journey.api:latest
