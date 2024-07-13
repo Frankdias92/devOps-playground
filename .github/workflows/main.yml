@@ -32,8 +32,8 @@ jobs:
         context: .
         push: true
         tags: |
-          docker.io/Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
-          docker.io/Frankdias92/nlw.journey.api:latest
+          docker.io/frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
+          docker.io/frankdias92/nlw.journey.api:latest
 
 #    - name: Build Docker image
 #      run: docker build -t Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} .
