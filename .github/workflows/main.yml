@@ -38,13 +38,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t docker.io/frankdias92/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }} .
+        run: docker build -t docker.io/frankmd/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }} .
 
       - name: Push Docker image
         run: |
-          docker push docker.io/frankdias92/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }}
-          docker tag docker.io/frankdias92/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }} docker.io/frankdias92/dev-ops-nlw:latest
-          docker push docker.io/frankdias92/dev-ops-nlw:latest
+          docker push docker.io/frankmd/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }}
+          docker tag docker.io/frankmd/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }} docker.io/frankmd/dev-ops-nlw:latest
+          docker push docker.io/frankmd/dev-ops-nlw:latest
 
   test:
     runs-on: ubuntu-latest
