@@ -1,11 +1,9 @@
-apiVersion: apps/v1.1
+apiVersion: apps/v1
 kind: Deployment
-
 metadata:
-  name: jouney-deployment
+  name: journey-deployment
   labels:
     app: journey
-
 spec:
   replicas: 5
   selector:
@@ -21,24 +19,34 @@ spec:
           image: frankmd/dev-ops-nlw:d0eb6c8
           env:
             - name: JOURNEY_DATABASE_USER
-              valueFrom: db-connection
-              key: db_user
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_user
 
             - name: JOURNEY_DATABASE_PASSWORD
-              valueFrom: db-connection
-              key: db_password
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_password
 
             - name: JOURNEY_DATABASE_HOST
-              valueFrom: db-connection
-              key: db_host
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_host
 
             - name: JOURNEY_DATABASE_PORT
-              valueFrom: db-connection
-              key: db_port
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_port
 
             - name: JOURNEY_DATABASE_NAME
-              valueFrom: db-connection
-              key: db_name
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_name
 
           resources:
             requests:
