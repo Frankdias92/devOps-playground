@@ -26,20 +26,11 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-#    - name: Build and push
-#      uses: docker/build-push-action@v4
-#      with:
-#        context: .
-#        push: true
-#        tags: |
-#          docker.io/frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
-#          docker.io/frankdias92/nlw.journey.api:latest
-
-    - name: Build Docker image
-      run: docker build -t Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} .
-
-    - name: Push image
-      run: |
-        docker push Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }}
-        docker tag Frankdias92/nlw.journey.api:${{ steps.generate_sha.outputs.sha }} Frankdias92/nlw.journey.api:latest
-        docker push Frankdias92/nlw.journey.api:latest
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: |
+          docker.io/frankdias92/dev-ops-nlw:${{ steps.generate_sha.outputs.sha }}
+          docker.io/frankdias92/dev-ops-nlw:latest
