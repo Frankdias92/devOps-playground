@@ -1,8 +1,17 @@
 # DevOps Implementation Project
 
+<a href="https://dev-ops-implementation.vercel.app">
+<img src="dev-ops-implementation/src/assets/cover-dev-implements.png" />
+</a>
+
+[live view:](https://dev-ops-implementation.vercel.app)
+
+
 ## Overview
 
+
 This project showcases the implementation of DevOps practices in a fictional company, **Tech**, as part of a challenge to simulate a real-world scenario. The main goal is to enhance processes using the CALMS framework (Culture, Automation, Lean, Measurement, and Sharing) and the Three Ways of DevOps.
+
 
 ## Tech Stack
 
