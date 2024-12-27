@@ -1,11 +1,11 @@
-output "bucket_domain_name" {
- value = data.aws_s3_bucket.se_bucket.bucket_domain_name 
+output "s3_bucket_name" {
+ value = module.s3.buck_domain_name 
  sensitive = false
- description = "Name domain bucket S3"
+ description = "Name of bucket S3"
 }
 
-output "bucket_region" {
-  value = data.aws_s3_bucket.se_bucket.region 
-  sensitive = false
-  description = "Region bucket"
+output "cdn_domain" {
+ value = module.cloudfront.cdn_domain_name 
+ sensitive = false
+ description = "Domain name of CloudFront"
 }

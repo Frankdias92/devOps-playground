@@ -1,4 +1,5 @@
-variable "org_name" {
+variable "state_bucket" {
   type = string
-  default = "franklin"
+  default = "franklin-state-bucket-tf"
+  description = "Bucket with state"
 }
