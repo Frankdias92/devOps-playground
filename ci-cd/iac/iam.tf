@@ -51,7 +51,7 @@ resource "aws_iam_role" "ecr-role" {
           Federated = "arn:aws:iam::863518429443:oidc-provider/token.actions.githubusercontent.com"
         },
         Condition = {
-          StringLike = {
+          StringEquals= {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
             "token.actions.githubusercontent.com:sub" : "repo:frankdias92/devOps-playground:ref:refs/heads/ci-cd"
           }
