@@ -33,9 +33,17 @@ jobs:
         node-version: ${{ matrix.node }} 
         cache: 'yarn'     # Enable caching for yarn dependencies
     
+    - name: Change directory to project
+      run: cd ci-cd/api
+    
     # Install dependencies and run tests
-    - run: yarn
-    - run: yarn run test
+    - name: Install depedencies
+      run: yarn install
+      working-directory: ci-cd/api
+
+    - name: Run tests
+      run: yarn run test
+      working-directory: ci-cd/api
     
     # Security scanning for vulnerabilities
     - name: Security scan
