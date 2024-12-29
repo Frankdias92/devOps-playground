@@ -5,7 +5,7 @@ resource "aws_iam_openid_connect_provider" "oidc-git" {
   ]
 
   thumbprint_list = [
-    "1b511abead59c6ce207077c0bf0e0043b1382612"
+    "74F3A68F16524F15424927704C9506F55A9316BD"
   ]
 
   tags = {
@@ -51,7 +51,7 @@ resource "aws_iam_role" "ecr-role" {
           Federated = "arn:aws:iam::863518429443:oidc-provider/token.actions.githubusercontent.com"
         },
         Condition = {
-          StringEquals = {
+          StringLike = {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
             "token.actions.githubusercontent.com:sub" : "repo:frankdias92/devOps-playground:ref:refs/heads/ci-cd"
           }
