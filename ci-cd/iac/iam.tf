@@ -72,8 +72,8 @@ resource "aws_iam_role" "ecr-role" {
           Resource = "*"
         },
         {
-          Sid      = "Statement2",
-          Action   = [
+          Sid = "Statement2",
+          Action = [
             "iam:PassRole",
             "iam:CreateServiceLinkedRole"
           ],
@@ -81,8 +81,8 @@ resource "aws_iam_role" "ecr-role" {
           Resource = "*"
         },
         {
-          Sid      = "Statement3",
-          Action   = [
+          Sid = "Statement3",
+          Action = [
             "ecr:GetDownloadUrlForLayer",
             "ecr:BatchGetImage",
             "ecr:BatchCheckLayerAvailability",
