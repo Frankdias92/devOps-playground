@@ -5,7 +5,7 @@ resource "aws_iam_openid_connect_provider" "oidc-git" {
   ]
 
   thumbprint_list = [
-    "74F3A68F16524F15424927704C9506F55A9316BD"
+    "74f3a68f16524f15424927704c9506f55a9316bd"
   ]
 
   tags = {
