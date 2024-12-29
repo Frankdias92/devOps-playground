@@ -31,18 +31,19 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node }} 
-        cache: 'npm'     # Enable caching for npm dependencies
+        cache: 'yarn'     # Enable caching for yarn dependencies
+        cache-dependency-path: ci-cd/api/yarn.lock 
     
     - name: Change directory to project
       run: cd ci-cd/api
     
     # Install dependencies and run tests
     - name: Install depedencies
-      run: npm install
+      run: yarn install
       working-directory: ci-cd/api
 
     - name: Run tests
-      run: npm run test
+      run: yarn test
       working-directory: ci-cd/api
     
     # Security scanning for vulnerabilities
