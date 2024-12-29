@@ -9,7 +9,7 @@ on:
 # Define required permissions for the workflow
 permissions:
   id-token: write    # Required for AWS authentication
-  contents: write    # Required for semantic release
+  contents: read # Required for semantic release
   issues: write      # Required for semantic release to create issues
 
 jobs:
@@ -80,7 +80,7 @@ jobs:
     
     # Configure AWS credentials for ECR access
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v3
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
         role-session-name: GitHubActions 

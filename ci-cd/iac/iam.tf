@@ -55,7 +55,7 @@ resource "aws_iam_role" "ecr-role" {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
           },
           StringLike = {
-            "token.actions.githubusercontent.com:sub": "repo:frankdias92/devOps-playground:ref:refs/heads/ci-cd"
+            "token.actions.githubusercontent.com:sub": "repo:{frankdias92}/{devOps-playground}:*"
           }
         }
       }
