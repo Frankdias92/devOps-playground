@@ -51,12 +51,14 @@ jobs:
       uses: snyk/actions/node@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    
+      working-directory: ci-cd/api 
+
     # Create semantic release for version management
     - name: Semantic release
       uses: cycjimmy/semantic-release-action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      working-directory: ci-cd/api
     
     # Generate short SHA for Docker image tagging
     - name: Generate tag
