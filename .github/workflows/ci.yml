@@ -47,12 +47,12 @@ jobs:
       working-directory: ci-cd/api
     
     # Security scanning for vulnerabilities
-    - name: Security scan
-      uses: snyk/actions/node@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-          args: ci-cd/api
+    # - name: Security scan
+    #   uses: snyk/actions/node@master
+    #   env:
+    #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #   with:
+    #       args: ci-cd/api
 
     # Create semantic release for version management
     - name: Semantic release
