@@ -35,7 +35,7 @@ jobs:
         cache-dependency-path: ci-cd/api/yarn.lock 
     
     - name: Change directory to project
-      run: cd ci-cd/api
+      # run: cd ci-cd/api
     
     # Install dependencies and run tests
     - name: Install depedencies
@@ -60,7 +60,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
-          args: ci-cd/api
+          working-directory: ci-cd/api
     
     # Generate short SHA for Docker image tagging
     - name: Generate tag
@@ -99,7 +99,7 @@ jobs:
         SHA_TAG: ${{ steps.generate_tag.outputs.sha }}
         BRANCH_TAG: ${{ github.ref_name }}
       run: |
-        docker build -t $REGISTRY/franklin-ci:$SHA_TAG -t $REGISTRY/franklin-ci:$BRANCH_TAG -t $REGISTRY/franklin-ci:latest .
+        docker build -t $REGISTRY/franklin-ci:$SHA_TAG -t $REGISTRY/franklin-ci:$BRANCH_TAG -t $REGISTRY/franklin-ci:latest -f ci-cd/api/Dockerfile ci-cd/api
         docker push --all-tags $REGISTRY/franklin-ci
         IMAGE=$(echo $REGISTRY/franklin-ci:$SHA_TAG)
         echo "image=$IMAGE" >> $GITHUB_OUTPUT
