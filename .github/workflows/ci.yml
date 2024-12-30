@@ -34,7 +34,7 @@ jobs:
         cache: 'yarn'     # Enable caching for yarn dependencies
         cache-dependency-path: ci-cd/api/yarn.lock 
     
-    - name: Change directory to project
+    # - name: Change directory to project
       # run: cd ci-cd/api
     
     # Install dependencies and run tests
