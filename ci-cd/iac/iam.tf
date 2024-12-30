@@ -42,24 +42,26 @@ resource "aws_iam_role" "ecr-role" {
   name = "ecr-role"
 
   assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Action = "sts:AssumeRoleWithWebIdentity",
-        Principal = {
-          Federated = "arn:aws:iam::863518429443:oidc-provider/token.actions.githubusercontent.com"
-        },
-        Condition = {
-          StringEquals= {
-            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
-          },
-          StringLike = {
-            "token.actions.githubusercontent.com:sub": "repo:frankdias92/devOps-playground:ref:refs/heads/*"
-          }
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Principal": {
+                "Federated": "arn:aws:iam::863518429443:oidc-provider/token.actions.githubusercontent.com"
+            },
+            "Condition": {
+                "StringEquals": {
+                    "token.actions.githubusercontent.com:aud": [
+                        "sts.amazonaws.com"
+                    ],
+                    "token.actions.githubusercontent.com:sub": [
+                        "repo:frankdias92/devOps-playground:ref:refs/heads/ci-cd"
+                    ]
+                }
+            }
         }
-      }
-    ]
+      ]
   })
 
   inline_policy {

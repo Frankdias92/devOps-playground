@@ -9,7 +9,7 @@ on:
 # Define required permissions for the workflow
 permissions:
   id-token: write    # Required for AWS authentication
-  contents: read # Required for semantic release
+  contents: write    # Required for semantic release
   issues: write      # Required for semantic release to create issues
 
 jobs:

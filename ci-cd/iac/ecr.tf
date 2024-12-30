@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "franklin-ci-api" {
-  name                 = "franklin-ci-api"
+  name                 = "franklin-ci"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
