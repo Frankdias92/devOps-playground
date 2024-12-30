@@ -38,8 +38,8 @@ resource "aws_iam_role" "app-runner-role" {
   }
 }
 
-resource "aws_iam_role" "ecr-role" {
-  name = "ecr-role"
+resource "aws_iam_role" "my-github-actions-role" {
+  name = "my-github-actions-role"
 
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",
@@ -56,7 +56,7 @@ resource "aws_iam_role" "ecr-role" {
                         "sts.amazonaws.com"
                     ],
                     "token.actions.githubusercontent.com:sub": [
-                        "repo:frankdias92/devOps-playground:ref:refs/heads/ci-cd"
+                        "repo:frankdias92/devOps-playground:ref:refs/heads/*"
                     ]
                 }
             }
