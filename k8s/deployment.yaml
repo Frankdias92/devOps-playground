@@ -1,0 +1,49 @@
+apiVersion: apps/v1.1
+kind: Deployment
+
+metadata:
+  name: jouney-deployment
+  labels:
+    app: journey
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: journey
+  template:
+    metadata:
+      labels:
+        app: journey
+    spec:
+      containers:
+        - name: api-journey
+          image: frankmd/dev-ops-nlw:d0eb6c8
+          env:
+            - name: JOURNEY_DATABASE_USER
+              valueFrom: db-connection
+              key: db_user
+
+            - name: JOURNEY_DATABASE_PASSWORD
+              valueFrom: db-connection
+              key: db_password
+
+            - name: JOURNEY_DATABASE_HOST
+              valueFrom: db-connection
+              key: db_host
+
+            - name: JOURNEY_DATABASE_PORT
+              valueFrom: db-connection
+              key: db_port
+
+            - name: JOURNEY_DATABASE_NAME
+              valueFrom: db-connection
+              key: db_name
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi
